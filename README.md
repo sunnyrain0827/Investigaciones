@@ -10,10 +10,9 @@ A small project to test-drive the wavelet tree-learning & synthesis concepts fro
 
 The treesynth and daubachies source was excised from the source code distribution of [TAPESTREA](http://taps.cs.princeton.edu/) and modified to taste.
 <br /> 
-<br /> 
+
 **TAPESTREA: Techniques And Paradigms for Expressive Synthesis, Transformation, and Rendering of Environmental Audio Engine and User Interface**
 
-<br /> 
 Copyright ©  2006 Ananya Misra, Perry R. Cook, and Ge Wang.
 
 - [http://taps.cs.princeton.edu](http://taps.cs.princeton.edu)
