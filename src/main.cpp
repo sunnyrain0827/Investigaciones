@@ -4,7 +4,7 @@
 //
 //  Created by iroro orife on 8/1/12.
 //
-//  I excised & modified a few files from TAPESTRA (see below) to
+//  I excised & modified a few files from TAPESTREA (see below) to
 //  test-drive wavelet tree-learning & synthesis concepts from
 //  the following papers:
 //
