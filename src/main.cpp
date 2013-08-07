@@ -15,7 +15,7 @@
 //  Misra, Ananya, Perry R. Cook, and Ge Wang. "Musical Tapestry:
 //  Re-composing Natural Sounds."
 //
-//  Everything GPLv2, per the original TAPESTRA 0.1.0.6 release
+//  Everything GPLv2, per the original TAPESTREA 0.1.0.6 release
 //
 //
 //
@@ -94,13 +94,8 @@ int main(int argc, const char * argv[]){
 			// keep trying to write to file/buffer, until written or told to shut up
 
 			while(!(write = tsio->WriteSoundFile(tsio->ofilename, ts->outputSignal(), ts->tree->getSize()))){
-				//res->mutex.release();
-				//BB_log( BB_LOG_FINE, "ts_go : released mutex" );
 
-				usleep(10000);
-
-				//res->mutex.acquire();
-				//BB_log( BB_LOG_FINE, "ts_go : acquired mutex" );
+                printf("Write to the file: %s failed!! \n\n", tsio->ofilename);
 			}
 		}
 	}
