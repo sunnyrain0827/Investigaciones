@@ -44,8 +44,7 @@
 
 	void free_vector(float * v, long nl, long nh);
 
-	void wt1(float a[], unsigned long n, int isign,
-			 void (* wtstep)(float[], unsigned long, int));
+	void wt1(float a[], unsigned long n, int isign, void (* wtstep)(float[], unsigned long, int));
 
 	void daub4(float a[], unsigned long n, int isign);
 

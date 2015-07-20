@@ -52,16 +52,16 @@ int main(int argc, const char * argv[]){
 	Treesynth * ts = new Treesynth();
 	TreesynthIO * tsio = new TreesynthIO();
 
-	char in_path[1024] = "/Users/iorif/Desktop/goodbye_hollis_etta_SHORT.wav";
-	char out_path[1024] = "/Users/iorif/Desktop/treesyn_OUT.wav";
+	char in_path[1024] = "/Users/iorife/github/Wavelet-Tree-Synth/data/night-1ch.wav";
+	char out_path[1024] = "/Users/iorife/Desktop/treesyn_OUT.wav";
 
 	strcpy(tsio->ifilename, in_path);
 	strcpy(tsio->ofilename, out_path);
 
-	ts->tree = new Tree();                          // new tree for tree synth
+	ts->tree = new Tree();                        // new tree for tree synth
 	ts->tree->initialize(lg(CUTOFF));             // initialize tree to log base 2 of 36 == 8
-	ts->initialize();                               // init tree synth
-	ts->resetTreeLevels(13);                      // log2 (8192) == 13, buffersize is 8192
+	ts->initialize();                             // init tree synth
+	// ts->resetTreeLevels(13);                      // log2 (8192) == 13, buffersize is 8192
 
 	// treesynth knobs  -- Need better explanations for these params
 	ts->kfactor = 1.0;     // ui_elements[SL_K]->fvalue();             // Determines npredecessors
@@ -73,28 +73,37 @@ int main(int argc, const char * argv[]){
 
 
 	int samples, write = 1;
-	while(1){
+    int total_samples = 0;
+    
+	while(1)
+    {
 		// Zero the trees
 		ts->resetTrees();
 
 		samples = tsio->ReadSoundFile(tsio->ifilename, ts->tree->values(), ts->tree->getSize() /* 1 << requested_levels */);
-		if(samples <= 0){
+		if(samples <= 0)
+        {
 			printf("read %i samples from the file %s \n\n", samples, tsio->ifilename);
 			break;
 		}
+        
+        total_samples += samples;
 		printf("Read %d samples (%d); requested: %d\n", samples, lg(samples), ts->tree->getSize() /* 1 << requested_levels */);
+        printf("Read %d total_samples \n", total_samples);
+
 		// Change levels accordingly
 
 		ts->resetTreeLevels(lg(samples));
 		TS_UINT total_levels = ts->tree->getLevels();
 		printf("total_levels: %d \n", total_levels);
 
-		if(ts->setup()){
-			ts->synth();
+		if(ts->setup())
+        {
+			ts->synth(); // do work!!!
+            
 			// keep trying to write to file/buffer, until written or told to shut up
-
-			while(!(write = tsio->WriteSoundFile(tsio->ofilename, ts->outputSignal(), ts->tree->getSize()))){
-
+			while(!(write = tsio->WriteSoundFile(tsio->ofilename, ts->outputSignal(), ts->tree->getSize())))
+            {
                 printf("Write to the file: %s failed!! \n\n", tsio->ofilename);
 			}
 		}

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D95F4867162A92AA00B966B9 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D95F4866162A92AA00B966B9 /* libsndfile.a */; };
+		D141DB2C1B54CB220048DD61 /* libsndfile.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D141DB2B1B54CB220048DD61 /* libsndfile.a */; };
 		D9785D7217B17E1800D09257 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9785D6D17B17E1800D09257 /* main.cpp */; };
 		D9785D7317B17E1800D09257 /* taps_treesynth.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9785D6E17B17E1800D09257 /* taps_treesynth.cpp */; };
 		D9785D7417B17E1800D09257 /* util_daub.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D9785D7017B17E1800D09257 /* util_daub.cpp */; };
@@ -26,8 +26,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D920570B15C919B800CF8E97 /* Treesynth_guts */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = Treesynth_guts; path = Treesynth; sourceTree = BUILT_PRODUCTS_DIR; };
-		D95F4866162A92AA00B966B9 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsndfile.a; path = /usr/local/lib/libsndfile.a; sourceTree = "<absolute>"; };
+		D141DB2B1B54CB220048DD61 /* libsndfile.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsndfile.a; path = ../../../../../opt/local/lib/libsndfile.a; sourceTree = "<group>"; };
+		D920570B15C919B800CF8E97 /* Treesynth */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Treesynth; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9785D6D17B17E1800D09257 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D9785D6E17B17E1800D09257 /* taps_treesynth.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = taps_treesynth.cpp; sourceTree = "<group>"; };
 		D9785D6F17B17E1800D09257 /* taps_treesynth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = taps_treesynth.h; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D95F4867162A92AA00B966B9 /* libsndfile.a in Frameworks */,
+				D141DB2C1B54CB220048DD61 /* libsndfile.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +59,7 @@
 		D920570C15C919B800CF8E97 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D920570B15C919B800CF8E97 /* Treesynth_guts */,
+				D920570B15C919B800CF8E97 /* Treesynth */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,7 +67,7 @@
 		D9785D6B17B178CD00D09257 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				D95F4866162A92AA00B966B9 /* libsndfile.a */,
+				D141DB2B1B54CB220048DD61 /* libsndfile.a */,
 			);
 			name = libs;
 			path = Treesynth_guts;
@@ -102,7 +102,7 @@
 			);
 			name = Treesynth;
 			productName = Treesynth_guts;
-			productReference = D920570B15C919B800CF8E97 /* Treesynth_guts */;
+			productReference = D920570B15C919B800CF8E97 /* Treesynth */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -164,7 +164,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/opt/local/include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = "";
@@ -185,7 +188,10 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/opt/local/include,
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = "";
 			};
@@ -194,7 +200,10 @@
 		D920571615C919B800CF8E97 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/opt/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
 			};
@@ -203,7 +212,10 @@
 		D920571715C919B800CF8E97 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				LIBRARY_SEARCH_PATHS = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/opt/local/lib,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = "";
 			};
