@@ -5,8 +5,8 @@ from keras.layers.embeddings import Embedding
 from keras.preprocessing import sequence
 from keras.optimizers import RMSprop
 import numpy as np
-maxlen = 2
 
+maxlen = 2
 batch_size = 1
 nb_word = 4
 nb_tag = 2
