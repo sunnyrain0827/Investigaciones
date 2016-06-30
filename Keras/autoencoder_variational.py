@@ -68,7 +68,7 @@ print(x_test.shape, y_test.shape)
 
 # #########################################################################################################
 # # [IOHAVOC] attempts to repurpose the mnist VAE code to IMDB. It became quickly clear that
-# # we need to use a LSTM instead of just a Dense
+# # we need to use a LSTM instead of just a Dense, i.e. a recurrent variational autoencoder
 # (x_train_imdb, y_train_imdb), (x_test_imdb, y_test_imdb) = imdb.load_data(nb_words=5000, maxlen=None)
 #
 # # print('Pad sequences (samples x time)')
