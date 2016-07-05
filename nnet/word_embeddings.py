@@ -25,6 +25,9 @@ idx2word = list(words)
 to_idx = lambda x: [word2idx[word] for word in x]
 sentences_idx = [to_idx(sentence) for sentence in sentences_lemmatized]
 sentences_array = np.asarray(sentences_idx, dtype='int32')
+print("Sentences array, i.e. integerized words (word2idx'd) : ")
+print(sentences_array)
+print("\n")
 
 # parameters for the model
 sentence_maxlen = 3
@@ -32,24 +35,22 @@ n_words = len(words)
 n_embed_dims = 3
 
 # put together a model to predict
-from keras.layers import Input, Embedding, SimpleRNN
+from keras.layers import Input, Embedding, SimpleRNN, LSTM
 from keras.models import Model
 
 input_sentence = Input(shape=(sentence_maxlen,), dtype='int32')
 input_embedding = Embedding(n_words, n_embed_dims)(input_sentence)
-color_prediction = SimpleRNN(1)(input_embedding)
+color_prediction = LSTM(1)(input_embedding)
 
 predict_green = Model(input=[input_sentence], output=[color_prediction])
 predict_green.compile(optimizer='sgd', loss='binary_crossentropy')
 
-print(sentences_array)
-print(is_green)
-
 # fit the model to predict what color each person is
-predict_green.fit([sentences_array], [is_green], nb_epoch=5000, verbose=0)
+predict_green.fit([sentences_array], [is_green], nb_epoch=15000, verbose=1)
 embeddings = predict_green.layers[1].W.get_value()
 
 
+##############################################################################
 # print out the embedding vector associated with each word
 
 xs = []
