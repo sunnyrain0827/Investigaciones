@@ -32,7 +32,7 @@ n_words = len(words)
 n_embed_dims = 3
 
 # put together a model to predict
-from keras.layers import Input, Embedding, merge, Flatten, SimpleRNN
+from keras.layers import Input, Embedding, SimpleRNN
 from keras.models import Model
 
 input_sentence = Input(shape=(sentence_maxlen,), dtype='int32')
@@ -46,9 +46,53 @@ print(sentences_array)
 print(is_green)
 
 # fit the model to predict what color each person is
-predict_green.fit([sentences_array], [is_green], nb_epoch=5000, verbose=1)
+predict_green.fit([sentences_array], [is_green], nb_epoch=5000, verbose=0)
 embeddings = predict_green.layers[1].W.get_value()
 
+
 # print out the embedding vector associated with each word
+
+xs = []
+ys = []
+zs = []
+
 for i in range(n_words):
-	print('{}: {}'.format(idx2word[i], embeddings[i]))
+    print('{}: {}'.format(idx2word[i], embeddings[i]))
+    xs.append(embeddings[i][0])
+    ys.append(embeddings[i][1])
+    zs.append(embeddings[i][2])
+
+from matplotlib import pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from mpl_toolkits.mplot3d import proj3d
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+plotlabels = []
+
+# these are okay if we didn't have to link the labels
+# xs,ys,zs = zip(*embeddings)
+# xs, ys, zs = np.split(points, 3, axis=1)
+sc = ax.scatter(xs, ys, zs)
+
+def update_position(e,fig,ax,labels_and_points):
+    for label, x, y, z in labels_and_points:
+        x2, y2, _ = proj3d.proj_transform(x, y, z, ax.get_proj())
+        label.xy = x2,y2
+        label.update_positions(fig.canvas.renderer)
+    fig.canvas.draw()
+
+for txt, x, y, z in zip(idx2word, xs, ys, zs):
+    x2, y2, _ = proj3d.proj_transform(x,y,z, ax.get_proj())
+    label = plt.annotate(
+        txt, xy = (x2, y2), xytext = (-20, 20),
+        textcoords = 'offset points', ha = 'right', va = 'bottom',
+        bbox = dict(boxstyle = 'round,pad=0.5', fc = 'yellow', alpha = 0.5),
+        arrowprops = dict(arrowstyle = '->', connectionstyle = 'arc3,rad=0'))
+    plotlabels.append(label)
+fig.canvas.mpl_connect('button_release_event', lambda event: update_position(event,fig,ax,zip(plotlabels, xs, ys, zs)))
+plt.show()
+
+
+
+
