@@ -15,6 +15,7 @@
 
 
 ### Seq2Seq papers, code and DL toolkit summaries
+
 | Summary | Code | Papers | Framework |
 | ----- | ---- | ---- | ---- |
 | Seq2Seq | https://github.com/sq6ra/encoder-decoder-model-with-sequence-learning-with-RNN-LSTM- | [sequence to sequence learning with neural networks](https://arxiv.org/abs/1409.3215) | Theano |
@@ -26,14 +27,14 @@
 | Variational Recurrent Neural Networks (VRNN) | [https://github.com/jych/nips2015_vrnn](https://github.com/jych/nips2015_vrnn) | [A Recurrent Latent Variable Model for Sequential Data](http://arxiv.org/abs/1412.6581)  | Theano |
 
 
-#### Sequence learning variants
+### Sequence learning variants
 
 | Summary | Code | Papers | Framework |
 | ----- | ---- | ---- | ---- |
 | Generative Handwriting using LSTM Mixture Density Network  | [https://github.com/hardmaru/write-rnn-tensorflow](https://github.com/hardmaru/write-rnn-tensorflow)| [Generating Sequences With Recurrent Neural Networks](http://arxiv.org/abs/1506.02216)  | TensorFlow |
 | DRAW | [https://github.com/ericjang/draw](https://github.com/ericjang/draw) | [DRAW: A Recurrent Neural Network For Image Generation](http://arxiv.org/abs/1502.04623)  | TensorFlow |
 | Generating sound with RNNs  | [https://github.com/johnglover/sound-rnn](https://github.com/johnglover/sound-rnn)| [Generating Sequences With Recurrent Neural Networks](http://arxiv.org/abs/1308.0850)  | Torch |
-| VAE-GAN-DRAW | [https://github.com/ikostrikov/TensorFlow-VAE-GAN-DRAW](https://github.com/ikostrikov/TensorFlow-VAE-GAN-DRAW) | [Deep Convolutional Generative Adversarial Networks](http://arxiv.org/pdf/1511.06434.pdf), [Variational Autoencoder (also Deep and Convolutional)](http://arxiv.org/pdf/1312.6114v10.pdf) & [DRAW: A Recurrent Neural Network For Image Generation](http://arxiv.org/pdf/1502.04623v2.pdf) | TensorFlow |
+| VAE-GAN-DRAW | [https://github.com/ikostrikov/TensorFlow-VAE-GAN-DRAW](https://github.com/ikostrikov/TensorFlow-VAE-GAN-DRAW) | [Deep Convolutional Generative Adversarial Networks](https://arxiv.org/abs/1511.06434), [Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114) & [DRAW: A Recurrent Neural Network For Image Generation](https://arxiv.org/abs/1502.04623) | TensorFlow |
 | Tree RNN | [https://github.com/ofirnachum/tree_rnn](https://github.com/ofirnachum/tree_rnn) | [Improved Semantic Representations From Tree-Structured Long Short-Term Memory Networks](https://arxiv.org/abs/1503.00075)  | Theano |
 | Sequence GAN | [https://github.com/ofirnachum/sequence_gan](https://github.com/ofirnachum/sequence_gan)| N/A | TensorFlow |
-| Generative Recurrent Adversarial Network (GRAN)  | [https://github.com/jiwoongim/GRAN](https://github.com/jiwoongim/GRAN)| [Generating images with recurrent adversarial networks](https://arxiv.org/pdf/1602.05110.pdf)  | Theano |
+| Generative Recurrent Adversarial Network (GRAN)  | [https://github.com/jiwoongim/GRAN](https://github.com/jiwoongim/GRAN)| [Generating images with recurrent adversarial networks](http://arxiv.org/abs/1602.05110)  | Theano |
