@@ -25,20 +25,11 @@
 | Variational Recurrent Autoencoder (VRAE)| [https://github.com/y0ast/Variational-Recurrent-Autoencoder](https://github.com/y0ast/Variational-Recurrent-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581)  | Theano |
 | Variational Recurrent Neural Networks (VRNN) | [https://github.com/jych/nips2015_vrnn](https://github.com/jych/nips2015_vrnn) | [A Recurrent Latent Variable Model for Sequential Data](http://arxiv.org/abs/1412.6581)  | Theano |
 
- Summary  | Code | Papers | Framework
------------- | ----------- | --------
-Seq2Seq | [https://github.com/sq6ra/encoder-decoder-model-with-sequence-learning-with-RNN-LSTM-](https://github.com/sq6ra/encoder-decoder-model-with-sequence-learning-with-RNN-LSTM-) | [sequence to sequence learning with neural networks](http://arxiv.org/pdf/1409.3215v3.pdf) | Theano
-Seq2Seq | [https://github.com/farizrahman4u/seq2seq](https://github.com/farizrahman4u/seq2seq) [https://github.com/nicolas-ivanov/debug_seq2seq](https://github.com/nicolas-ivanov/debug_seq2seq)| [sequence to sequence learning with neural networks](http://arxiv.org/pdf/1409.3215v3.pdf) | Keras
-Skip Thought Seq2Seq  | [https://github.com/zuiwufenghua/Sequence-To-Sequence-Generation-Skip-Thoughts-](https://github.com/zuiwufenghua/Sequence-To-Sequence-Generation-Skip-Thoughts-) | [Skip-Thought Vectors](http://arxiv.org/pdf/1506.06726v1.pdf) | Keras
-Variational Seq2Seq  | [https://github.com/cheng6076/Variational-LSTM-Autoencoder](https://github.com/cheng6076/Variational-LSTM-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581) -- [Generating Sentences from a Continuous Space](http://arxiv.org/abs/1511.06349)  | Torch
-Variational Recurrent Autoencoder (VRAE)| [https://github.com/RyotaKatoh/chainer-Variational-Recurrent-Autoencoder](https://github.com/RyotaKatoh/chainer-Variational-Recurrent-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581)  | Chainer
-Variational Recurrent Autoencoder (VRAE)| [https://github.com/y0ast/Variational-Recurrent-Autoencoder](https://github.com/y0ast/Variational-Recurrent-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581)  | Theano
-Variational Recurrent Neural Networks| [https://github.com/jych/nips2015_vrnn](https://github.com/jych/nips2015_vrnn) | [A Recurrent Latent Variable Model for Sequential Data](http://arxiv.org/abs/1412.6581)  | Theano
 
 #### Sequence learning variants
 
-| Summary  | Code | Papers | Framework |
-| ------------- | ------------- | ---- |
+| Summary | Code | Papers | Framework |
+| ----- | ---- | ---- | ---- |
 | Generative Handwriting using LSTM Mixture Density Network  | [https://github.com/hardmaru/write-rnn-tensorflow](https://github.com/hardmaru/write-rnn-tensorflow)| [Generating Sequences With Recurrent Neural Networks](http://arxiv.org/abs/1506.02216)  | TensorFlow |
 | DRAW | [https://github.com/ericjang/draw](https://github.com/ericjang/draw) | [DRAW: A Recurrent Neural Network For Image Generation](http://arxiv.org/abs/1502.04623)  | TensorFlow |
 | Generating sound with RNNs  | [https://github.com/johnglover/sound-rnn](https://github.com/johnglover/sound-rnn)| [Generating Sequences With Recurrent Neural Networks](http://arxiv.org/abs/1308.0850)  | Torch |
