@@ -22,6 +22,8 @@
 | Skip Thought Seq2Seq  | [https://github.com/zuiwufenghua/Sequence-To-Sequence-Generation-Skip-Thoughts-](https://github.com/zuiwufenghua/Sequence-To-Sequence-Generation-Skip-Thoughts-) | [Skip-Thought Vectors](http://arxiv.org/pdf/1506.06726v1.pdf) | Keras |
 | Variational Seq2Seq  | [https://github.com/cheng6076/Variational-LSTM-Autoencoder](https://github.com/cheng6076/Variational-LSTM-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581),  [Generating Sentences from a Continuous Space](http://arxiv.org/abs/1511.06349)  | Torch |
 | Variational Recurrent Autoencoder (VRAE) | [https://github.com/RyotaKatoh/chainer-Variational-Recurrent-Autoencoder](https://github.com/RyotaKatoh/chainer-Variational-Recurrent-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581)  | Chainer |
+| Variational Recurrent Autoencoder (VRAE)| [https://github.com/y0ast/Variational-Recurrent-Autoencoder](https://github.com/y0ast/Variational-Recurrent-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581)  | Theano |
+| Variational Recurrent Neural Networks (VRNN) | [https://github.com/jych/nips2015_vrnn](https://github.com/jych/nips2015_vrnn) | [A Recurrent Latent Variable Model for Sequential Data](http://arxiv.org/abs/1412.6581)  | Theano |
 
  Summary  | Code | Papers | Framework
 ------------ | ----------- | --------
