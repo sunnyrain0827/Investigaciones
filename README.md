@@ -19,7 +19,7 @@
 ### GitHub Resources
 | Title | Link |
 | ----- | ---- |
-| GitHub Explore | https://github.com/explore |
+| GitHub Explore asdasd | https://github.com/explore |
 | GitHub Blog | https://github.com/blog |
 | GitHub Help | https://help.github.com/ |
 | GitHub Training | https://training.github.com/ |
