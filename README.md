@@ -19,8 +19,8 @@
 ### GitHub Resources
 | Summary | Code | Papers | Framework |
 | ----- | ---- | ---- | ---- |
-| GitHub Explore asdasd | https://github.com/explore | | |
-| GitHub Blog | https://github.com/blog | | |
+| Seq2Seq | https://github.com/explore | | Theano |
+| Seq2Seq | https://github.com/blog | | Keras|
 | GitHub Help | https://help.github.com/ | | |
 | GitHub Training | https://training.github.com/ | | |
 | GitHub Developer | https://developer.github.com/ | | |
