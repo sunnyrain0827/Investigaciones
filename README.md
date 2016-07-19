@@ -21,6 +21,8 @@
 | ----- | ---- | ---- | ---- |
 | Seq2Seq | https://github.com/sq6ra/encoder-decoder-model-with-sequence-learning-with-RNN-LSTM- | [sequence to sequence learning with neural networks](http://arxiv.org/pdf/1409.3215v3.pdf) | Theano |
 | Seq2Seq | https://github.com/farizrahman4u/seq2seq, https://github.com/nicolas-ivanov/debug_seq2seq | [sequence to sequence learning with neural networks](http://arxiv.org/pdf/1409.3215v3.pdf) | Keras|
+| Skip Thought Seq2Seq  | [https://github.com/zuiwufenghua/Sequence-To-Sequence-Generation-Skip-Thoughts-](https://github.com/zuiwufenghua/Sequence-To-Sequence-Generation-Skip-Thoughts-) | [Skip-Thought Vectors](http://arxiv.org/pdf/1506.06726v1.pdf) | Keras
+Variational Seq2Seq  |
 
  Summary  | Code | Papers | Framework
 ------------ | ----------- | --------
