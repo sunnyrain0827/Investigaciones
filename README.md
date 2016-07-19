@@ -14,9 +14,7 @@
 	* Finetuning VGG16 model
 
 
-#### Seq2Seq papers, code and DL toolkit summaries
-
-### GitHub Resources
+### Seq2Seq papers, code and DL toolkit summaries
 | Summary | Code | Papers | Framework |
 | ----- | ---- | ---- | ---- |
 | Seq2Seq | https://github.com/sq6ra/encoder-decoder-model-with-sequence-learning-with-RNN-LSTM- | [sequence to sequence learning with neural networks](http://arxiv.org/pdf/1409.3215v3.pdf) | Theano |
