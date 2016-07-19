@@ -17,14 +17,15 @@
 #### Seq2Seq papers, code and DL toolkit summaries
 
 ### GitHub Resources
-| Title | Link |
-| ----- | ---- |
-| GitHub Explore asdasd | https://github.com/explore |
-| GitHub Blog | https://github.com/blog |
-| GitHub Help | https://help.github.com/ |
-| GitHub Training | https://training.github.com/ |
-| GitHub Developer | https://developer.github.com/ |
-| Github Education (Free Micro Account and other stuff for students) | https://education.github.com/ |
+| Summary | Code | Papers | Framework |
+| ----- | ---- | ---- | ---- |
+| GitHub Explore asdasd | https://github.com/explore | | |
+| GitHub Blog | https://github.com/blog | | |
+| GitHub Help | https://help.github.com/ | | |
+| GitHub Training | https://training.github.com/ | | |
+| GitHub Developer | https://developer.github.com/ | | |
+| Github Education (Free Micro Account and other stuff for students) |  https://education.github.com/ | | |
+
 
  Summary  | Code | Papers | Framework
 ------------ | ----------- | --------
