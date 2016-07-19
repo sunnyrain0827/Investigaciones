@@ -16,6 +16,12 @@
 
 #### Seq2Seq papers, code and DL toolkit summaries
 
+| Tables        | Are           | Cool  |
+| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
+
  Summary  | Code | Papers | Framework
 ------------ | ----------- | --------
 Seq2Seq | [https://github.com/sq6ra/encoder-decoder-model-with-sequence-learning-with-RNN-LSTM-](https://github.com/sq6ra/encoder-decoder-model-with-sequence-learning-with-RNN-LSTM-) | [sequence to sequence learning with neural networks](http://arxiv.org/pdf/1409.3215v3.pdf ) | Theano
