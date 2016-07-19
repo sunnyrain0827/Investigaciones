@@ -20,7 +20,7 @@
 | Summary | Code | Papers | Framework |
 | ----- | ---- | ---- | ---- |
 | Seq2Seq | https://github.com/sq6ra/encoder-decoder-model-with-sequence-learning-with-RNN-LSTM- | [sequence to sequence learning with neural networks](http://arxiv.org/pdf/1409.3215v3.pdf) | Theano |
-| Seq2Seq | https://github.com/farizrahman4u/seq2seq | http://arxiv.org/pdf/1409.3215v3.pdf | Keras|
+| Seq2Seq | https://github.com/farizrahman4u/seq2seq, https://github.com/nicolas-ivanov/debug_seq2seq | [sequence to sequence learning with neural networks](http://arxiv.org/pdf/1409.3215v3.pdf) | Keras|
 | GitHub Help | https://help.github.com/ | | |
 | GitHub Training | https://training.github.com/ | | |
 | GitHub Developer | https://developer.github.com/ | | |
