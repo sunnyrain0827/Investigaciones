@@ -23,9 +23,12 @@
 | Skip Thought Seq2Seq  | [https://github.com/zuiwufenghua/Sequence-To-Sequence-Generation-Skip-Thoughts-](https://github.com/zuiwufenghua/Sequence-To-Sequence-Generation-Skip-Thoughts-) | [Skip-Thought Vectors](http://arxiv.org/abs/1506.06726) | Keras |
 | Seq2Seq with Attention  | [https://github.com/harvardnlp/seq2seq-attn](https://github.com/harvardnlp/seq2seq-attn) | [Effective Approaches to Attention-based Neural Machine Translation](http://stanford.edu/~lmthang/data/papers/emnlp15_attn.pdf), [Character-Aware Neural Language Models](http://arxiv.org/abs/1508.06615) | Torch |
 | Variational Seq2Seq  | [https://github.com/cheng6076/Variational-LSTM-Autoencoder](https://github.com/cheng6076/Variational-LSTM-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581),  [Generating Sentences from a Continuous Space](http://arxiv.org/abs/1511.06349)  | Torch |
-| Variational Recurrent Autoencoder (VRAE) | [https://github.com/RyotaKatoh/chainer-Variational-Recurrent-Autoencoder](https://github.com/RyotaKatoh/chainer-Variational-Recurrent-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581)  | Chainer |
 | Variational Recurrent Autoencoder (VRAE)| [https://github.com/y0ast/Variational-Recurrent-Autoencoder](https://github.com/y0ast/Variational-Recurrent-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581)  | Theano |
+| Variational Recurrent Autoencoder (VRAE) | [https://github.com/RyotaKatoh/chainer-Variational-Recurrent-Autoencoder](https://github.com/RyotaKatoh/chainer-Variational-Recurrent-Autoencoder) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581)  | Chainer |
+| LSTM VRAE | [https://github.com/jayhack/LSTMVRAE](https://github.com/jayhack/LSTMVRAE) | [Variational Recurrent Auto-Encoders](http://arxiv.org/abs/1412.6581) | Chainer |
 | Variational Recurrent Neural Networks (VRNN) | [https://github.com/jych/nips2015_vrnn](https://github.com/jych/nips2015_vrnn) | [A Recurrent Latent Variable Model for Sequential Data](http://arxiv.org/abs/1412.6581)  | Theano |
+
+
 
 
 ### Sequence learning variants
