@@ -10,7 +10,8 @@ Author: Eric Jang
 """
 
 import tensorflow as tf
-from tensorflow.models.rnn.rnn_cell import LSTMCell
+# from tensorflow.models.rnn.rnn_cell import LSTMCell
+from tensorflow.python.ops.rnn_cell import BasicLSTMCell
 from tensorflow.examples.tutorials import mnist
 import numpy as np
 import os
@@ -31,7 +32,7 @@ write_n = 5 # write glimpse grid width/height
 read_size = 2*read_n*read_n if FLAGS.read_attn else 2*img_size
 write_size = write_n*write_n if FLAGS.write_attn else img_size
 z_size=10 # QSampler output size
-T=50 # MNIST generation sequence length
+T=10 # MNIST generation sequence length
 batch_size=100 # training minibatch size
 train_iters=10000
 learning_rate=1e-3 # learning rate for optimizer
@@ -43,8 +44,8 @@ DO_SHARE=None # workaround for variable_scope(reuse=True)
 
 x = tf.placeholder(tf.float32,shape=(batch_size,img_size)) # input (batch_size * img_size)
 e=tf.random_normal((batch_size,z_size), mean=0, stddev=1) # Qsampler noise
-lstm_enc = LSTMCell(enc_size, read_size+dec_size) # encoder Op
-lstm_dec = LSTMCell(dec_size, z_size) # decoder Op
+lstm_enc = BasicLSTMCell(enc_size, read_size+dec_size) # encoder Op
+lstm_dec = BasicLSTMCell(dec_size, z_size) # decoder Op
 
 def linear(x,output_dim):
     """
