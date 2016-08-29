@@ -36,8 +36,8 @@ def xrecons_grid(X,B,A):
 	return img
 
 if __name__ == '__main__':
-	prefix="draw-"
-	out_file="./draw_data.npy" # sys.argv[2]
+	prefix="./images/draw-"
+	out_file="./data/draw_data.npy" # sys.argv[2]
 	[C,Lxs,Lzs]=np.load(out_file)
 	T,batch_size,img_size=C.shape
 	X=1.0/(1.0+np.exp(-C)) # x_recons=sigmoid(canvas)
