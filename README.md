@@ -3,7 +3,7 @@
 * ~~Wavelet-Tree-Synth for texture synthesis~~
 * ~~Time-signature detection using multi-res, similarity matrices~~
 * Structural segmentation using MSAF: <https://github.com/ruohoruotsi/msaf>
-* nnet - experiments in Keras/Theano/Tensorflow/Chainer:  
+* nnet - survey experiments in Keras/Theano/Tensorflow/Chainer:  
 	* Biaxial RNN: <https://github.com/ruohoruotsi/biaxial-rnn-music-composition>
 	* Sequence-to-sequence (LSTM-based) autoencoders:
 		* alternative to ordinal linear discriminant analysis (OLDA)? Generalized automatic feature representation from a audio-similarity matrix
@@ -12,6 +12,11 @@
 	* Variational recurrent autoencoders that map sequences of different lengths to a single length (re: olda, audio2vec, etc)
 	* Info-GAN, Drum, Alex Graves vocoder
 	* Finetuning VGG16 model
+
+* nnet  - plan - 
+	* Adapt Eric Jangs's DRAW (tensorflow) to work with johnglover sound-rnn MDN. Will need a phase vocoder and a way of eating and 
+	* Depending on how tensorflow goes, reimplement in Chainer.
+	* Think about was of packing up the input audio data, so we can easilty slap the input source/batch loader onto any framework's implementation.
 
 
 ### Seq2Seq papers, code and DL toolkit summaries
