@@ -15,7 +15,6 @@ is_green = np.asarray([[0, 1, 1, 1, 1, 0, 0, 0]], dtype='int32').T
 lemma = lambda x: x.strip().lower().split(' ')
 sentences_lemmatized = [lemma(sentence) for sentence in sentences]
 words = set(itertools.chain(*sentences_lemmatized))
-# set(['boy', 'fed', 'ate', 'cat', 'kicked', 'hat'])
 
 # dictionaries for converting words to integers and vice versa
 word2idx = dict((v, i) for i, v in enumerate(words))
@@ -45,6 +44,7 @@ output = Dense(1, activation='sigmoid')(color_prediction)
 
 predict_green = Model(input=[input_sentence], output=[output])
 predict_green.compile(optimizer='sgd', loss='binary_crossentropy')
+predict_green.summary()
 
 # fit the model to predict what color each person is
 predict_green.fit([sentences_array], [is_green], nb_epoch=15000, verbose=1)
@@ -65,16 +65,11 @@ for i in range(n_words):
     zs.append(embeddings[i][2])
 
 from matplotlib import pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
 from mpl_toolkits.mplot3d import proj3d
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 plotlabels = []
-
-# these are okay if we didn't have to link the labels
-# xs,ys,zs = zip(*embeddings)
-# xs, ys, zs = np.split(points, 3, axis=1)
 sc = ax.scatter(xs, ys, zs)
 
 def update_position(e,fig,ax,labels_and_points):
@@ -94,7 +89,3 @@ for txt, x, y, z in zip(idx2word, xs, ys, zs):
     plotlabels.append(label)
 fig.canvas.mpl_connect('button_release_event', lambda event: update_position(event,fig,ax,zip(plotlabels, xs, ys, zs)))
 plt.show()
-
-
-
-
