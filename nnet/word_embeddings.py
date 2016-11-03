@@ -35,14 +35,15 @@ n_words = len(words)
 n_embed_dims = 3
 
 # put together a model to predict
-from keras.layers import Input, Embedding, SimpleRNN, LSTM
+from keras.layers import Input, Embedding, SimpleRNN, Dense, LSTM
 from keras.models import Model
 
 input_sentence = Input(shape=(sentence_maxlen,), dtype='int32')
 input_embedding = Embedding(n_words, n_embed_dims)(input_sentence)
-color_prediction = LSTM(1)(input_embedding)
+color_prediction = LSTM(3)(input_embedding)
+output = Dense(1, activation='sigmoid')(color_prediction)
 
-predict_green = Model(input=[input_sentence], output=[color_prediction])
+predict_green = Model(input=[input_sentence], output=[output])
 predict_green.compile(optimizer='sgd', loss='binary_crossentropy')
 
 # fit the model to predict what color each person is
