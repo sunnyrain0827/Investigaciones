@@ -1,7 +1,6 @@
 # We'll need numpy for some mathematical operations
 import numpy as np
 import librosa
-
 import matplotlib.pyplot as plt
 
 def createFourOnTheFloor(bpm, nb_beats, sr, sample):
@@ -42,12 +41,13 @@ librosa.output.write_wav("4-on-floor-output.wav", y, sr)
 #def beat_track(y=None, sr=22050, onset_envelope=None, hop_length=512,
 #               start_bpm=120.0, tightness=100, trim=True, bpm=None):
 
-tempo, beats = librosa.beat.beat_track(y=y, sr=sr, bpm=128, hop_length=512)
+tempo, beats = librosa.beat.beat_track(y=y, sr=sr, hop_length=512)
 print("\nBeat times: ", librosa.frames_to_time(beats, sr=sr))
 print("Num beats: " + str(len(beats)))
 print("Tempo: " + str(tempo))
 
-# plt.figure(figsize=(12, 6))
-# plt.interactive(False)
-# plt.plot(y)
-# plt.show(block=True)
+
+plt.figure(figsize=(12, 6))
+plt.interactive(False)
+plt.plot(y)
+plt.show()
