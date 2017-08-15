@@ -8,6 +8,7 @@
 from MidiOutFile import MidiOutFile
 from MidiInFile import MidiInFile
 from MidiOutStream import MidiOutStream
+import midi  # to print out note values
 
 import numpy
 
@@ -40,7 +41,10 @@ class midiread(MidiOutStream):
     self.div = division
 
   def note_on(self, channel=0, note=0x40, velocity=0x40):
-    self.notes.append([note, self.abs_time_in_seconds(), None])
+    time = self.abs_time_in_seconds()
+    self.notes.append([note, time, None])
+    # print(midi.NOTE_VALUE_MAP_SHARP[note], time)
+    print(note, time)
 
   def note_off(self, channel=0, note=0x40, velocity=0x40):
     i = len(self.notes) - 1

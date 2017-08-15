@@ -14,6 +14,10 @@ import chainer.functions as F
 from VRAE import VRAE, make_initial_state
 
 import dataset
+import chainer.computational_graph as c
+
+
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--data_path',      type=str,   default="dataset")
@@ -44,33 +48,36 @@ if args.dataset == 'midi':
 
     split_x = np.vsplit(train_x, n_batch)
 
-    n_epochs = 500
+    n_epochs = 5000
     continuous = False
 
+    print("seq_length: " + str(seq_length))
 
-if args.dataset == 'bvh':
-    frames, frame_time, motion_data = dataset.load_bvh_data("%s/bvh/sample.bvh")
-    max_motion = np.max(motion_data, axis=0)
-    min_motion = np.min(motion_data, axis=0)
 
-    norm_motion_data = (motion_data - min_motion) / (max_motion - min_motion)
-    train_x = norm_motion_data
-    train_y = norm_motion_data
-
-    n_x = train_x.shape[1]
-    n_hidden = [250]
-    n_z = 10
-    n_y = n_x
-
-    n_online= 10
-    n_batch = train_x.shape[0] / n_online
-
-    if train_x.shape[0] % n_online != 0:
-        reduced_sample = train_x.shape[0] % n_online
-        train_x = train_x[:train_x.shape[0] - reduced_sample]
-
-    n_epochs = 500
-    continuous = True
+# IOHAVOC -- not going to ever use skeletal motion capture data
+# if args.dataset == 'bvh':
+#     frames, frame_time, motion_data = dataset.load_bvh_data("%s/bvh/sample.bvh")
+#     max_motion = np.max(motion_data, axis=0)
+#     min_motion = np.min(motion_data, axis=0)
+#
+#     norm_motion_data = (motion_data - min_motion) / (max_motion - min_motion)
+#     train_x = norm_motion_data
+#     train_y = norm_motion_data
+#
+#     n_x = train_x.shape[1]
+#     n_hidden = [250]
+#     n_z = 10
+#     n_y = n_x
+#
+#     n_online= 10
+#     n_batch = train_x.shape[0] / n_online
+#
+#     if train_x.shape[0] % n_online != 0:
+#         reduced_sample = train_x.shape[0] % n_online
+#         train_x = train_x[:train_x.shape[0] - reduced_sample]
+#
+#     n_epochs = 500
+#     continuous = True
 
 
 
@@ -104,8 +111,10 @@ layers['gen_h_h']  = F.Linear(n_hidden_gen[0], n_hidden_gen[0])
 layers['output']   = F.Linear(n_hidden_gen[-1], train_x.shape[1])
 
 if args.init_from == "":
+    print("Initializing model from code spec")
     model = VRAE(**layers)
 else:
+    print("Initializing model from pickle file: " + args.init_from)
     model = pickle.load(open(args.init_from))
 
 # state pattern
@@ -138,8 +147,15 @@ for epoch in xrange(1, n_epochs + 1):
         if args.gpu >= 0:
             x_batch = cuda.to_gpu(x_batch)
 
+        # x_batch.shape == (20, 88)
         output, rec_loss, kl_loss, state = model.forward_one_step(x_batch, state, continuous, nonlinear_q='tanh',
                                                                   nonlinear_p='tanh', output_f = 'sigmoid', gpu=-1)
+
+        # print("\n\nx_batch shape: " + str(x_batch.shape ))
+        # print("x_batch[0]: " + str(x_batch[0]))
+        # print("x_batch shape sum: " + str(sum(sum(x) for x in x_batch)))
+        # print("output shape: " + str(output.shape ))
+        # print("output[0]: " + str(output[0]))
 
         outputs[i*seq_length:(i+1)*seq_length, :] = output
 
@@ -154,9 +170,14 @@ for epoch in xrange(1, n_epochs + 1):
         optimizer.clip_grads(args.clip_grads)
         optimizer.update()
 
+        # if epoch == 1 and i == 0:
+        #     with open("graph.dot", "w") as o:
+        #         o.write(c.build_computational_graph((loss, )).dump())
+
     saved_output = outputs
 
-    print "{}/{}, train_loss = {}, total_rec_loss = {}, time = {}".format(epoch, n_epochs, total_loss.data, total_rec_loss.data, time.time()-t1)
+    print("{}/{}, train_loss = {}, total_rec_loss = {}, time = {}".format(epoch, n_epochs, total_loss.data,
+                                                                          total_rec_loss.data, time.time()-t1))
 
     if epoch % 100 == 0:
         model_path = "%s/VRAE_%s_%d.pkl" % (args.output_dir, args.dataset, epoch)

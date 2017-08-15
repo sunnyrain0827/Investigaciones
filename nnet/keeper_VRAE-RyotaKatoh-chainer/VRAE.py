@@ -20,7 +20,8 @@ class VRAE(FunctionSet):
         v_d = Variable(np.array(d).astype(np.float32))
         return v_d
 
-    def forward_one_step(self, x_data, state, continuous=True, nonlinear_q='tanh', nonlinear_p='tanh', output_f = 'sigmoid', gpu=-1):
+    def forward_one_step(self, x_data, state, continuous=True, nonlinear_q='tanh',
+                         nonlinear_p='tanh', output_f = 'sigmoid', gpu=-1):
 
         output = np.zeros( x_data.shape ).astype(np.float32)
 
@@ -30,7 +31,9 @@ class VRAE(FunctionSet):
 
         output_a_f = nonlinear[output_f]
 
-        # compute q(z|x)
+        # compute q( z | x )
+
+        # IOHAVOC -- Like OMG! is this is the RNN recurrence? -- we need LSTM here haba!
         for i in range(x_data.shape[0]):
             x_in_t = Variable(x_data[i].reshape((1, x_data.shape[1])))
             hidden_q_t = nonlinear_f_q( self.recog_in_h( x_in_t ) + self.recog_h_h( state['recog_h'] ) )
@@ -47,7 +50,7 @@ class VRAE(FunctionSet):
         eps = Variable(eps)
         z   = q_mean + F.exp(q_log_sigma) * eps
 
-        # compute p( x | z)
+        # compute p( x | z )
 
         h0 = nonlinear_f_p( self.z(z) )
         out= self.output(h0)
@@ -94,13 +97,19 @@ class VRAE(FunctionSet):
 
     def generate_z_x(self, seq_length_per_z, sample_z, nonlinear_q='tanh', nonlinear_p='tanh', output_f='sigmoid', gpu=-1):
 
-        output = np.zeros((seq_length_per_z * sample_z.shape[0], self.recog_in_h.W.shape[1]))
+        print(sample_z.shape[0])
+        print(self.recog_in_h.W.data.shape[1])
+
+        output = np.zeros((seq_length_per_z * sample_z.shape[0], self.recog_in_h.W.data.shape[1]))
 
         nonlinear = {'sigmoid': F.sigmoid, 'tanh': F.tanh, 'softplus': self.softplus, 'relu': F.relu}
         nonlinear_f_q = nonlinear[nonlinear_q]
         nonlinear_f_p = nonlinear[nonlinear_p]
 
         output_a_f = nonlinear[output_f]
+
+        state_pattern = ['recog_h', 'gen_h']
+        state = make_initial_state(500, state_pattern)
 
         for epoch in xrange(sample_z.shape[0]):
             gen_out = np.zeros((seq_length_per_z, output.shape[1]))

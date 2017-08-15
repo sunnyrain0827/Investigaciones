@@ -44,9 +44,10 @@ class VRAE:
         W_hx = theano.shared(np.random.normal(0,sigma_init,(features,hidden_units_decoder)).astype(theano.config.floatX), name='W_hx')
         b_hx = theano.shared(np.zeros((features,1)).astype(theano.config.floatX), name='b_hx', broadcastable=(False,True))
 
-        self.params = OrderedDict([("W_xhe", W_xhe), ("W_hhe", W_hhe), ("b_he", b_he), ("W_hmu", W_hmu), ("b_hmu", b_hmu), \
-            ("W_hsigma", W_hsigma), ("b_hsigma", b_hsigma), ("W_zh", W_zh), ("b_zh", b_zh), ("W_hhd", W_hhd), ("W_xhd", W_xhd), ("b_hd", b_hd),
-            ("W_hx", W_hx), ("b_hx", b_hx)])
+        self.params = OrderedDict([("W_xhe", W_xhe), ("W_hhe", W_hhe), ("b_he", b_he), \
+                                   ("W_hmu", W_hmu), ("b_hmu", b_hmu), ("W_hsigma", W_hsigma), ("b_hsigma", b_hsigma), \
+                                   ("W_zh", W_zh),   ("b_zh", b_zh),
+                                   ("W_hhd", W_hhd), ("W_xhd", W_xhd), ("b_hd", b_hd), ("W_hx", W_hx), ("b_hx", b_hx)])
 
         #Adam parameters
         self.m = OrderedDict()
@@ -199,7 +200,7 @@ class VRAE:
         for t in xrange(t_steps):
             h = np.tanh(W_hhd.dot(h) + b_hhd + W_xhd.dot(x[t,:,np.newaxis]) + b_xhd)
             # print("decode/h", h)
-            x[t+1,:] = np.squeeze(1 /(1 + np.exp(-(W_hx.dot(h) + b_hx))))
+            x[t+1,:] = np.squeeze(1 /(1 + np.exp(-(W_hx.dot(h) + b_hx))))  # what is going on here??
         
         return x[1:,:]
 

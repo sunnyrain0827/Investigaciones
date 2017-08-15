@@ -1,51 +1,56 @@
 #
-# A Neural Network in 11 lines of Python (Part 1)
-# http://iamtrask.github.io/2015/07/12/basic-python-network/
+# Based on http://iamtrask.github.io/2015/07/12/basic-python-network/
 #
+# Heavily modified to incorporate full zoom on the mechanics
+# of backprop. No hand-waving permitted!
 
 import numpy as np
 
-# sigmoid function
-def nonlin(x, deriv=False):
-    if (deriv == True):
-        return x * (1 - x)
-    return 1 / (1 + np.exp(-x))
-
-
-# input dataset
+# Input data
 X = np.array([[0, 0, 1],
               [0, 1, 1],
               [1, 0, 1],
               [1, 1, 1]])
 
-# output dataset
-y = np.array([[0,
-               0,
-               1,
-               1]]).T
+# Output labels
+y = np.array([[0],
+              [0],
 
-# seed random numbers to make calculation
-# deterministic (just a good practice)
-np.random.seed(1)
+              [1],
+              [1]])
+
 
 # initialize weights randomly with mean 0
-syn0 = 2 * np.random.random((3, 1)) - 1
+np.random.seed(1)
+W0 = 2 * np.random.random((3, 1)) - 1
 
-for iter in range(10000):
+f       = lambda x: 1.0/(1.0 + np.exp(-x))    # sigmoid "non-linearity"
+f_prime = lambda x: x * (1 - x)               # derivative of sigmoid
+
+print("X shape: " + str(X.shape))
+print("y shape: " + str(y.shape))
+print("W0 shape: " + str(W0.shape))
+print("np.dot shape: " + str(np.dot(X, W0).shape))
+
+for iter in range(60000):
+
     # forward propagation
-    l0 = X
-    l1 = nonlin(np.dot(l0, syn0))
+    y_hat = f(np.dot(X, W0))
+    loss = y - y_hat     # how much did we miss?
 
-    # how much did we miss?
-    l1_error = y - l1
+    # print("W0: \n" + str(W0))
+    if (iter % 1000) == 0:
+        print("Loss: " + str(np.mean(np.abs(loss))))
+        # print("np.dot X, W0: \n" + str(np.dot(X, W0)))
 
     # multiply how much we missed by the
-    # slope of the sigmoid at the values in l1
-    l1_delta = l1_error * nonlin(l1, True)
-    print(l1_delta)
+    # slope of the sigmoid at the values in y_prime
+    loss_delta = loss * f_prime(y_hat)
 
     # update weights
-    syn0 += np.dot(l0.T, l1_delta)
+    # W0 += np.dot(X.T, loss_delta)
+    W0 += np.dot(loss_delta.T, X).T
+    # print("deltas \n" + str(np.dot(X.T, loss_delta)) + "\n\n")
 
 print("Output After Training:")
-print(l1)
+print(y_hat)

@@ -20,7 +20,8 @@ sigma_init = 1e-3
 batch_size = 1
 
 
-vrae = VRAE.VRAE(hidden_units_encoder, hidden_units_decoder, features, latent_variables, b1, b2, learning_rate, sigma_init, batch_size)
+vrae = VRAE.VRAE(hidden_units_encoder, hidden_units_decoder, features, latent_variables,
+                 b1, b2, learning_rate, sigma_init, batch_size)
 
 # (wavrate, wavdata) = wavfile.read("4-on-floor-output.wav")
 (wavrate, wavdata) = wavfile.read("19_this_is_an_idea.wav")
@@ -42,6 +43,12 @@ print("data.shape", data.shape)
 
 print("create_gradientfunctions")
 data = data.astype(theano.config.floatX)
+
+ii = 0
+x_input_slice = (data[0].T)[(ii*100):(ii+1)*100]
+print("input slices size: " + str(x_input_slice.shape))
+
+
 tdata = theano.shared(data)
 vrae.create_gradientfunctions(tdata)
 
@@ -56,17 +63,19 @@ xs = np.zeros((N,1))
 xss = []
 zs = []
 
+
 for i in range(N):
     #print("encoding")
     # z, mu_encoder, log_sigma_encoder = vrae.encode(data[0,:1].T)
-    z, mu_encoder, log_sigma_encoder = vrae.encode((data[0].T)[(i*100):(i+1)*100])
+    x_input_slice = (data[0].T)[(i*100):(i+1)*100]
+    z, mu_encoder, log_sigma_encoder = vrae.encode(x_input_slice)
     zs.append(z)
     
     # print("z.shape, z, mu_enc, s_enc", z.shape, mu_encoder, log_sigma_encoder)
     # np.save("z.npy", z)
 
     #print("decoding")
-    tx = vrae.decode(10, latent_variables, z)
+    tx = vrae.decode(100, latent_variables, z)
     xs[i,0] = tx[-1]
     xss.append(tx)
     # print("x.shape, x", x.shape, x)
